@@ -12,5 +12,7 @@ export default function RootLayout() {
     throw new Error('Add EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY to your .env file')
   }
 
-  return(<Stack />);
+  return(<ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}><Stack>
+    <Stack.Screen name="index" options={{ headerShown: false }} />
+  </Stack></ClerkProvider>);
 }

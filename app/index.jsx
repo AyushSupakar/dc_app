@@ -12,22 +12,20 @@ export default function Index() {
 
   
 
-  return (<ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}><ScrollView
+  return (<ScrollView
       style={{
         flex: 1,
         paddingTop: 10,
         
       }}
+      options={{ headerShown: false }}
     >
       <SignedIn>
               <Text>You are signed In</Text>
               <SignOutButton />
             </SignedIn>
             <SignedOut>
-              {/* <Link href="../(auth)/sign-in"> */}
                 <Login />
-              {/* </Link> */}
-
             </SignedOut> 
-    </ScrollView></ClerkProvider>);
+    </ScrollView>);
 }
