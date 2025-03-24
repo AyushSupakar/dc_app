@@ -5,23 +5,26 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { TextInput } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
 import Colors from '../../Utils/Colors';
-
+import Entypo from '@expo/vector-icons/Entypo';
+import SignOutButton from '@/app/components/SignOutButton';
 
 const Header = () => {
     const {user, isLoading} = useUser();
   return user&&(
     <View style={styles.container}>
         {/* Profile Section */}
-        <View style={styles.ProfileMainContainer}>
-        <View style={styles.profileConstainer}>    
-        <Image source={{uri:user.imageUrl}}
-        style={styles.userImage}/>
-        <View>
-            <Text style={{color:Colors.WHITE, fontFamily:'outfit'}} >Welcome,</Text>
-            <Text style={{color:Colors.WHITE, fontSize:20, fontFamily:'outfit-medium'}}>{user?.fullName}</Text>
+        <View style={styles.ProfileMainContainerx}>
+            <View style={styles.profileContainer}>    
+                <Image source={{uri:user.imageUrl}}
+                        style={styles.userImage}/>
+                <View>
+                    <Text style={{color:Colors.WHITE, fontFamily:'outfit'}} >Welcome,</Text>
+                    <Text style={{color:Colors.WHITE, fontSize:20, fontFamily:'outfit-medium'}}>{user?.fullName}</Text>
+                </View>
         </View>
-        </View>
-        <FontAwesome5 name="calendar-check" size={27} color="white" />
+            <SignOutButton />
+ 
+       
     </View>
         {/* Search Bar Section */}
         <View style={styles.searchBarContainer} >
@@ -45,6 +48,7 @@ const styles = StyleSheet.create({
         backgroundColor:Colors.PRIMARY,
         borderBottomLeftRadius:25,
         borderBottomRightRadius:25,
+        justifyContent:'center'
     },
     searchBarContainer:{
         display:'flex',
@@ -70,13 +74,14 @@ const styles = StyleSheet.create({
          padding:10,
          borderRadius:10,
     },
-    ProfileMainContainer:{
+    ProfileMainContainerx: {
         display:'flex',
+   
         flexDirection:'row',
         alignItems:'center',
-        justifyContent:'space-between'
+        justifyContent:'space-between',
     },
-    profileConstainer:{
+    profileContainer:{
         display:'flex',
         flexDirection:'row',
         alignItems:'center',
