@@ -9,6 +9,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import Colors from '../Utils/Colors';
+import HomeNavigation from "./HomeNavigation";
 
 
 
@@ -21,7 +22,7 @@ const TabNavigaion = () => {
       
       <Tab.Screen 
         name="home" 
-        component={HomeScreen} 
+        component={HomeNavigation} 
         options= {{ 
             tabBarLabel: ({color})=>(
                 <Text style={{color:color, fontSize:12, marginTop:-4}}>Home</Text>),
@@ -40,7 +41,7 @@ const TabNavigaion = () => {
                 }}/>
       <Tab.Screen name="booking" component={BookingScreen}  options= {{ 
             tabBarLabel: ({color})=>(
-                <Text style={{color:color, fontSize:12, marginTop:-4}}>Booking</Text>),
+                <Text style={{color:color, fontSize:12, marginTop:-4}}>Bookings</Text>),
             tabBarIcon: ({color,size})=>(
                 // <FontAwesome name="home" size={size} color={color} /> 
                 <MaterialIcons name="event" size={size} color={color} />

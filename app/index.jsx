@@ -1,3 +1,4 @@
+import './gesture-handler';
 import { ScrollView, Text, View } from "react-native";
 import Login  from "./Screens/LoginScreen/Login";
 import TabNavigation  from "./Navigations/TabNavigaion";

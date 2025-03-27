@@ -8,7 +8,7 @@ import Colors from '../../Utils/Colors';
 import Entypo from '@expo/vector-icons/Entypo';
 import SignOutButton from '@/app/components/SignOutButton';
 
-const Header = () => {
+const Header = ({showsearch}) => {
     const {user, isLoading} = useUser();
   return user&&(
     <View style={styles.container}>
@@ -19,7 +19,7 @@ const Header = () => {
                         style={styles.userImage}/>
                 <View>
                     <Text style={{color:Colors.WHITE, fontFamily:'outfit'}} >Welcome,</Text>
-                    <Text style={{color:Colors.WHITE, fontSize:20, fontFamily:'outfit-medium'}}>{user?.fullName}</Text>
+                    <Text style={{color:Colors.WHITE, fontSize:20, fontFamily:'outfit-medium'}}>{((user?.fullName).split(" ")[0])+" "+(((((user?.fullName).split(" ")).length)>1)?((user?.fullName).split(" ")[1]):(""))}</Text>
                 </View>
         </View>
             <SignOutButton />
@@ -27,14 +27,14 @@ const Header = () => {
        
     </View>
         {/* Search Bar Section */}
-        <View style={styles.searchBarContainer} >
+        {showsearch && (<View style={styles.searchBarContainer} >
             <TextInput placeholder='search'
             style={styles.textInput}
             />
             <Feather
                 style={styles.searchBtn}
             name="search" size={16} color={Colors.PRIMARY} />
-        </View>
+        </View>)}
     </View>
   )
 }
@@ -43,8 +43,8 @@ export default Header
 
 const styles = StyleSheet.create({
     container:{
-        padding:20,
-        paddingTop:40,
+        padding:15,
+        paddingTop:15,
         backgroundColor:Colors.PRIMARY,
         borderBottomLeftRadius:25,
         borderBottomRightRadius:25,
@@ -55,9 +55,9 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'space-between',
-        marginTop:15,
+        marginTop:20,
         gap:10,
-        marginBottom:10
+        marginBottom:20
     },
     textInput:{
         backgroundColor:Colors.WHITE,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     },
     ProfileMainContainerx: {
         display:'flex',
-   
+        marginTop:10,
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'space-between',

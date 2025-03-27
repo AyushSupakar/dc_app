@@ -3,12 +3,15 @@ import React, { useEffect, useState } from 'react';
 import GlobalApi from './../../Utils/GlobalApi';
 import Heading from '@/app/components/Heading';
 import Colors from '@/app/Utils/Colors';
+import { useNavigation } from '@react-navigation/native';
 
-const Categories = () => {
+
+const Categories = ({showsearch, setShowSearch}) => {
     const [flhor, setFlhor] = useState(true);
     const [numcol, setNumcol] = useState(1);
     const [key, setKey] = useState("flatlist-horizontal");
     const [categories, setCategories] = useState([]);
+    const navigation= useNavigation();
 
     useEffect(() => {
         getCategories();
@@ -24,11 +27,12 @@ const Categories = () => {
         const isHorizontal = !flhor;
         setFlhor(isHorizontal);
         setNumcol(isHorizontal ? 1 : 4);
+        setShowSearch(!showsearch);
         setKey(`flatlist-${isHorizontal ? "horizontal" : "grid"}`); // Change key to force re-render
     };
 
     return (
-        <View style={{displaye:'flex', marginTop: 20, justifyContent:'center' }}>
+        <View style={{display:'flex', marginTop: 15, justifyContent:'center', marginBottom:3 }}>
             <View style={styles.container}>
                 <Text style={styles.heading}>Categories</Text>
                 <TouchableOpacity onPress={switchView}>
@@ -46,7 +50,11 @@ const Categories = () => {
                 style={{alignSelf:'center'}}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item, index }) => (
-                    <View style={styles.containerCat}>
+                    <TouchableOpacity
+                     onPress={()=>navigation.push('services',{
+                        category:item.name
+                     })}
+                     style={styles.containerCat}>
                         <View style={styles.iconContainer}>
                             <Image
                                 source={{ uri: item?.icon?.url }}
@@ -56,7 +64,7 @@ const Categories = () => {
                         <Text style={{ fontFamily: 'outfit', fontSize: 10, textAlign: 'center', fontWeight: 'bold' }}>
                             {(item.name).split(' ').map((word) => (`${word}\n`))}
                         </Text>
-                    </View>
+                    </TouchableOpacity>
                 )}
             />
         </View>
@@ -84,6 +92,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginBottom: 10
+        marginBottom:5
     }
 });

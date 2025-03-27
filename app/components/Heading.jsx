@@ -22,6 +22,6 @@ const styles = StyleSheet.create({heading:{
     flexDirection:'row',
     alignItems:'center',
     justifyContent:'space-between',
-    marginBottom:10
+    marginBottom:5
   }
 })
