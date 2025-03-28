@@ -53,10 +53,16 @@ const BookingScreen = () => {
             }}>Your Bookings</Text>
             </TouchableOpacity>
 
-            <View>
+            <View
+              style={{
+                marginBottom:40,
+                padding:10
+              }}
+            >
               <FlatList
                 data={bookingList}
                 onRefresh={()=>getUserBookings()}
+                showsVerticalScrollIndicator={false}
                 refreshing={loading}
                 renderItem={({item})=>(
                   <View style={styles.container}>

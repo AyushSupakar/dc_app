@@ -77,7 +77,7 @@ const getSlider = async ()=>{
 
 const getUserBookings= async (useremail) => {
   const query5 = gql`query MyQuery {
-  bookings(orderBy: updatedAt_DESC, where: {useremail: "supercarayush@gmail.com"}) {
+  bookings(orderBy: updatedAt_DESC, where: {useremail: "`+useremail+`"}) {
     service {
       name
       images {
@@ -116,6 +116,25 @@ const result =  await client.request(query4);
     
         return result;
 }
+const getServicesBySearch = async (searchstr) => {
+  const query6 = gql`query MyQuery {
+  services(where: {_search: "`+searchstr+`"}) {
+    id
+    name
+    images {
+      url
+    }
+    about
+    category {
+      name
+    }
+    email
+  }
+}`
+const result =  await client.request(query6);
+    
+        return result;
+}
 
 const createBooking = async (data) => {
   const mutaionQuery = gql`mutation createBooking {
@@ -142,6 +161,9 @@ const createBooking = async (data) => {
 }`
 
 
+console.log("data=",data);
+
+// await client.request(mutaionQuery);
 
 const result =  await request(Master_URL, mutaionQuery);
     
@@ -156,5 +178,6 @@ export default {
     getServices,
     getServicesByCategory,
     createBooking,
-    getUserBookings
+    getUserBookings,
+    getServicesBySearch
 }

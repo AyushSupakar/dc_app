@@ -1,5 +1,5 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
 import { useUser } from '@clerk/clerk-expo';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { TextInput } from 'react-native';
@@ -7,9 +7,13 @@ import Feather from '@expo/vector-icons/Feather';
 import Colors from '../../Utils/Colors';
 import Entypo from '@expo/vector-icons/Entypo';
 import SignOutButton from '@/app/components/SignOutButton';
+import { useNavigation } from '@react-navigation/native';
 
 const Header = ({showsearch}) => {
     const {user, isLoading} = useUser();
+    const [searchstr, setSearchstr] = useState("");  
+        const navigation= useNavigation();
+
   return user&&(
     <View style={styles.container}>
         {/* Profile Section */}
@@ -29,11 +33,19 @@ const Header = ({showsearch}) => {
         {/* Search Bar Section */}
         {showsearch && (<View style={styles.searchBarContainer} >
             <TextInput placeholder='search'
+            value={searchstr}
+            onChangeText={(text)=>setSearchstr(text)}
             style={styles.textInput}
             />
+            <TouchableOpacity
+                onPress={()=>navigation.push('servicesbysearcch',{
+                    searchstr:searchstr
+                 })}
+            >
             <Feather
                 style={styles.searchBtn}
             name="search" size={16} color={Colors.PRIMARY} />
+            </TouchableOpacity>
         </View>)}
     </View>
   )

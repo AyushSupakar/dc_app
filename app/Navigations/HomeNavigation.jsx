@@ -5,6 +5,7 @@ import HomeScreen from "./../Screens/HomeScreen/HomeScreen";
 import ServicesByCategory from '../Screens/ServicesByCategory/ServicesByCategory';
 import ServiceDetailsScreen from '../Screens/ServiceDetails/ServiceDetailsScreen';
 import BookingFormScreen from '../Screens/BookingFormScreen/BookingFormScreen';
+import ServicesBySearch from './../Screens/ServicesBySearch/ServicesBySearch'
 
 
 const Stack = createStackNavigator();
@@ -16,6 +17,7 @@ const HomeNavigation = () => {
     }}>
       <Stack.Screen name='home' component={HomeScreen}/>
       <Stack.Screen name='services' component={ServicesByCategory}/>
+      <Stack.Screen name='servicesbysearcch' component={ServicesBySearch}/>
       <Stack.Screen name='service_details' component={ServiceDetailsScreen}/>
       <Stack.Screen name='booking_form' component={BookingFormScreen}/>
     </Stack.Navigator>

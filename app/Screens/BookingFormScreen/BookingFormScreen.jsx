@@ -40,6 +40,11 @@ const BookingFormScreen = () => {
             return;
         }
 
+        if ((address?.city)!=='Bargarh') {
+            Alert.alert('Error', 'Sorry, we  currently operate only in Bargarh, Odisha (India).');
+            return;
+        }
+
         const data = {
             serviceid: service?.id,
             username: user?.fullName,
@@ -56,11 +61,12 @@ const BookingFormScreen = () => {
 
         
         GlobalApi.createBooking(data).then(resp=>{
-            
+            console.log(resp)
         })
 
        
         Alert.alert('Success', 'Your booking has been submitted.');
+        
 
         navigation.reset({
             index: 0,
