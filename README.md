@@ -13,3 +13,8 @@ This is a construction and home renovation services app from [Dash Constructions
 4. Book a slot, provide your details and order.
 
 5. And the best professionals from Dash Constructions will be at your door step to repair or build whatever you need.
+
+💙 Contact us @ (parasdash91@gmail.com)
+
+![preview img](./assets/images/dc_app.png) 
+![preview img](./assets/images/dc_admin.png) 
