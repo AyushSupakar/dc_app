@@ -56,18 +56,18 @@ const Login = () => {
 
   return (
     <View style={{alignItems:'center'}}>
-    <Image source={require('./../../../assets/images/loginImage.jpg')} 
+    <Image source={require('./../../../assets/images/fs9.jpeg')} 
         style={styles.loginImage} />
     
     <View style={styles.subContainer}> 
           <Text style={{color:Colors.WHITE, fontSize:27, textAlign:'center'}}> 
-            Let's Find
-            <Text style={{fontWeight:'bold'}} > Professional Construction and Repair </Text> Services
+            We Provide
+            <Text style={{fontWeight:'bold'}} >The Best Professional Construction and Repair </Text> Services
           </Text>
-          <Text style={{fontSize:17, color:Colors.WHITE, textAlign:'center', marginTop:20 }}> Best App to get Services near you</Text>             
+          <Text style={{fontSize:17, color:Colors.WHITE, textAlign:'center', marginTop:20 }}> Book any Constrcution, Repair or Home Renovation Service you need..</Text>             
         <TouchableOpacity style={styles.button} onPress={onPress} >
           
-          <Text style={{textAlign:'center', fontSize:17, color:Colors.PRIMARY}}> Let's Get Started </Text>
+          <Text style={{textAlign:'center', fontFamily:'outfit-bold', fontSize:17, color:Colors.PRIMARY}}> Let's Sign In </Text>
         </TouchableOpacity>     
     </View>
 
@@ -79,11 +79,10 @@ export default Login
 
 const styles = StyleSheet.create({
     loginImage:{
-        width:200,
+        width:'95%',
         height:400,
         marginTop:30,
-        borderWidth:4,
-        borderColor:Colors.BLACK,
+        
         borderRadius:50,
     },
     subContainer:{
